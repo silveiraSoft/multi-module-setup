@@ -1,4 +1,4 @@
-package com.adalbertosn1982.multimodulesetup.module1;
+package com.adalbertosn1982.multimodule.module1;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -6,17 +6,22 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.lang.management.ManagementFactory;
+import java.text.NumberFormat;
+
 @SpringBootApplication
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class }, scanBasePackages = "com.adalbertosn1982.*")
 @Slf4j
 public class Module1 {
     public static void main(String[] args) {
-        log.info("======== Begin run Execute Module1 =========");
         SpringApplication.run(Module1.class, args);
-    }
-
-    public static void printInfo() {
         log.info("======== Begin run Execute Module1 =========");
-        /*
+    }
+    /**
+     * Metodo que imprime la informacion de memoria que inicia usando la aplicacion en el
+     * contenedor.
+     */
+    public static void printInfo() {
         Runtime runtime = Runtime.getRuntime();
 
         final NumberFormat format = NumberFormat.getInstance();
@@ -32,8 +37,6 @@ public class Module1 {
         log.info("Max memory: " + format.format(maxMemory / mb) + mega);
         log.info("Total free memory: " + format.format((freeMemory + (maxMemory - allocatedMemory)) / mb) + mega);
         log.info("=================================================================");
-
-         */
     }
 
     @Bean
